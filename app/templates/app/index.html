@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados Tecnicas y Seleccion de Caracteristicas </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container py-5">
+        <h1 class="text-center text-primary mb-4">Resultados del Modelo Random Forest</h1>
+
+        <!-- Formulario para subir dataset -->
+        <div class="card p-4 shadow mb-4">
+            <h5 class="mb-3">Subir archivo de dataset (TotalFeatures-ISCXFlowMeter.csv)</h5>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="input-group">
+                    <input type="file" name="dataset" class="form-control" accept=".csv" required>
+                    <button type="submit" class="btn btn-success">Subir y Procesar</button>
+                </div>
+            </form>
+        </div>
+
+        {% if error %}
+            <div class="alert alert-danger text-center">{{ error }}</div>
+        {% endif %}
+
+        {% if show_results %}
+        <!-- Resultados -->
+        <div class="row text-center mb-4">
+            <div class="col-md-4 mb-3">
+                <div class="card bg-success text-white shadow p-3">
+                    <h5>F1-Score (Random Forest)</h5>
+                    <h2>{{ f1_rf }}</h2>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card bg-info text-white shadow p-3">
+                    <h5>F1-Score (Validación)</h5>
+                    <h2>{{ f1_val }}</h2>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card bg-warning text-dark shadow p-3">
+                    <h5>Accuracy</h5>
+                    <h2>{{ accuracy }}</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="card shadow-lg p-4">
+            <h4 class="text-secondary mb-3"> Dataset (primeras 50 filas)</h4>
+            <div class="table-responsive">
+                {{ dataset_html|safe }}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

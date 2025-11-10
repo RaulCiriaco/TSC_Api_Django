@@ -1,0 +1,19 @@
+# --- Requisitos principales ---
+Django==5.2.8
+djangorestframework==3.16.1
+gunicorn==23.0.0
+psycopg2-binary==2.9.11
+
+# --- Soporte de variables de entorno ---
+python-dotenv==1.0.1
+dj-database-url==3.0.1
+
+# --- Dependencias adicionales (opcional según tu proyecto) ---
+Flask==3.1.1
+Flask-Cors==5.0.0
+openrouteservice==2.3.3
+geopy==2.4.1
+polyline==2.0.2
+protobuf==6.32.1
+numpy==1.26.4
+pandas==2.2.2
