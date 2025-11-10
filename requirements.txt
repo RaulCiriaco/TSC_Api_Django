@@ -18,4 +18,5 @@ polyline==2.0.2
 protobuf==6.32.1
 pandas==2.3.3
 numpy==1.26.3
+whitenoise==6.11.0
 
