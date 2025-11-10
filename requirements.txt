@@ -15,5 +15,6 @@ openrouteservice==2.3.3
 geopy==2.4.1
 polyline==2.0.2
 protobuf==6.32.1
-numpy==1.26.4
-pandas==2.2.2
+pandas==2.1.1
+numpy==1.26.3
+
